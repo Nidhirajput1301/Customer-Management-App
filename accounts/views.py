@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 
-ef home(request):
+def home(request):
 	return render(request, 'accounts/dashboard.html')
 
 
