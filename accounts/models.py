@@ -1,12 +1,15 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 
 class Customer(models.Model):
+	user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
 	name = models.CharField(max_length=200, null=True)
 	phone = models.CharField(max_length=200, null=True)
 	email = models.CharField(max_length=200, null=True)
+	profile_pic = models.ImageField(null=True, blank=True)
 	date_created = models.DateTimeField(auto_now_add=True, null=True)
 
   # for name of table object acc to us not like customer(1)
@@ -53,3 +56,7 @@ class Order(models.Model):
 
 	def __str__(self):
 		return(self.product.name)
+		# if self.product.name == None:
+		# 		return "ERROR-PRODUCT NAME IS NULL"
+		# return self.product.name
+		 

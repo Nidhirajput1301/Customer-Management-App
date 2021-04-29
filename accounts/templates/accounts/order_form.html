@@ -2,6 +2,19 @@
 {% load static %}
 {% block content %}
 
+<style>
+  .field-label {
+    display: inline-flex;
+		width: 100px !important;
+		margin-right: 10px;
+		margin-bottom: 5px;
+  }
+
+	.field {
+		display: inline;
+	}
+</style>
+
 
 <div class="row">
 	<div class="col-md-6">
@@ -9,7 +22,23 @@
 
 			<form action="" method="POST">
 				{% csrf_token %}
-				{{form}}
+				<!-- {{form}} -->
+
+				<!-- {% for field in form %}
+				  {{field.label}}
+				  {{field}}
+					<br>
+				{% endfor %} -->
+
+				{% for field in form %}
+				  <div class="field-label">
+				    {{field.label}}
+					</div>
+					<div class="field">
+				   {{field}}
+					</div>
+					<br>
+				{% endfor %} 
 				
 				<input type="submit" name="Submit">
 			</form>
